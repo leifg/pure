@@ -50,6 +50,10 @@ prompt_pure_cmd_exec_time() {
 	(($elapsed > ${PURE_CMD_MAX_EXEC_TIME:=5})) && prompt_pure_human_time $elapsed
 }
 
+prompt_pure_ruby_version() {
+	echo "%F{red}$ruby_info[version]"
+}
+
 prompt_pure_preexec() {
 	cmd_timestamp=$EPOCHSECONDS
 
@@ -65,13 +69,15 @@ prompt_pure_string_length() {
 }
 
 prompt_pure_precmd() {
+	ruby-info
+
 	# shows the full path in the title
 	print -Pn '\e]0;%~\a'
 
 	# git info
 	vcs_info
 
-	local prompt_pure_preprompt="\n%F{blue}%~%F{242}$vcs_info_msg_0_`prompt_pure_git_dirty` $prompt_pure_username%f %F{yellow}`prompt_pure_cmd_exec_time`%f"
+	local prompt_pure_preprompt="\n%F{blue}%~%F{242}$vcs_info_msg_0_`prompt_pure_git_dirty` `prompt_pure_ruby_version` $prompt_pure_username%f %F{yellow}`prompt_pure_cmd_exec_time`%f"
 	print -P $prompt_pure_preprompt
 
 	# check async if there is anything to pull
