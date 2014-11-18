@@ -1,9 +1,9 @@
 {
   "name": "pure-prompt",
   "version": "0.3.1",
-  "description": "Pretty, minimal and fast ZSH prompt",
+  "description": "Pretty, minimal and fast ZSH prompt forked for ruby version",
   "license": "MIT",
-  "repository": "sindresorhus/pure",
+  "repository": "leifg/pure",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
